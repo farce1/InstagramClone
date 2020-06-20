@@ -56,7 +56,8 @@
         android:layout_below="@+id/passwordEditText"
         android:layout_marginTop="38dp"
         android:onClick="signUpClicked"
-        android:text="Sign Up" />
+        android:text="Sign Up"
+        android:layout_alignLeft="@+id/logoImageView" />
 
     <TextView
         android:id="@+id/loginTextView"
@@ -68,5 +69,7 @@
         android:layout_toEndOf="@+id/signUpButton"
         android:text="or, Login"
         android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@+id/signUpButton" />
 </RelativeLayout>
