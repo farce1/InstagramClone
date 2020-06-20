@@ -24,8 +24,6 @@ public class StarterApplication extends Application {
   public void onCreate() {
     super.onCreate();
 
-    // e6uPFYEglpBE
-
     // Enable Local Datastore.
     Parse.enableLocalDatastore(this);
 
@@ -36,21 +34,20 @@ public class StarterApplication extends Application {
             .server(getResources().getString(R.string.parse_server))
             .build()
     );
-    ParseObject object = new ParseObject("ExampleObject");
-    object.put("myNumber", "123");
-    object.put("myString", "rob");
-
-    object.saveInBackground(new SaveCallback () {
+    ParseObject score = new ParseObject("Score");
+    score.put("username", "nick");
+    score.put("score", 45);
+    score.saveInBackground(new SaveCallback() {
       @Override
-      public void done(ParseException ex) {
-        if (ex == null) {
-          Log.i("Parse Result", "Successful!");
+      public void done(ParseException e) {
+        if(e == null) {
+          Log.i("Success", "We saved the score");
         } else {
-          Log.i("Parse Result", "Failed" + ex.toString());
+          e.printStackTrace();
+          Log.i("Fail", "We not saved the score");
         }
       }
     });
-
 
     ParseUser.enableAutomaticUser();
 
