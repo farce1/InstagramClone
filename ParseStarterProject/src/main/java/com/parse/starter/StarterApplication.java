@@ -9,52 +9,35 @@
 package com.parse.starter;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
-import com.parse.SaveCallback;
+
 
 public class StarterApplication extends Application {
 
-  @Override
-  public void onCreate() {
-    super.onCreate();
+    @Override
+    public void onCreate() {
+        super.onCreate();
 
-    // Enable Local Datastore.
-    Parse.enableLocalDatastore(this);
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
 
-    // Add your initialization code here
-    Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
-            .applicationId(getResources().getString(R.string.parse_app_id))
-            .clientKey(getResources().getString(R.string.parse_client_key))
-            .server(getResources().getString(R.string.parse_server))
-            .build()
-    );
-    ParseObject score = new ParseObject("Score");
-    score.put("username", "nick");
-    score.put("score", 45);
-    score.saveInBackground(new SaveCallback() {
-      @Override
-      public void done(ParseException e) {
-        if(e == null) {
-          Log.i("Success", "We saved the score");
-        } else {
-          e.printStackTrace();
-          Log.i("Fail", "We not saved the score");
-        }
-      }
-    });
+        // Add your initialization code here
+        Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
+                .applicationId(getResources().getString(R.string.parse_app_id))
+                .clientKey(getResources().getString(R.string.parse_client_key))
+                .server(getResources().getString(R.string.parse_server))
+                .build()
+        );
 
-    ParseUser.enableAutomaticUser();
 
-    ParseACL defaultACL = new ParseACL();
-    defaultACL.setPublicReadAccess(true);
-    defaultACL.setPublicWriteAccess(true);
-    ParseACL.setDefaultACL(defaultACL, true);
+        //ParseUser.enableAutomaticUser();
 
-  }
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        defaultACL.setPublicWriteAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
+
+    }
 }
