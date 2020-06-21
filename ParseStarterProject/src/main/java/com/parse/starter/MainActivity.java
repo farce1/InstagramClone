@@ -114,8 +114,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle("Instagram");
+
         loginTextView = findViewById(R.id.loginTextView);
         loginTextView.setOnClickListener(this);
         usernameEditText = findViewById(R.id.usernameEditText);
